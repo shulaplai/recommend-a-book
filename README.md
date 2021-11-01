@@ -1,4 +1,3 @@
 # recommend-a-book
 
-inspired by https://recommendmeabook.com/
-
+inspired by <https://recommendmeabook.com/>
