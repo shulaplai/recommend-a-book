@@ -1,0 +1,34 @@
+{
+  "name": "strapi-starter-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "develop": "next dev",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "deploy": "next build && next export",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix"
+  },
+  "dependencies": {
+    "bootstrap": "^5.1.1",
+    "moment": "^2.24.0",
+    "next": "^11.0.0",
+    "react": "17.0.0",
+    "react-bootstrap": "^2.0.0-rc.0",
+    "react-dom": "17.0.0",
+    "react-icons": "^4.3.1",
+    "react-markdown": "^4.2.2",
+    "react-moment": "^0.9.6",
+    "react-pro-sidebar": "^0.7.1"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.30.0",
+    "eslint-config-next": "^11.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.1"
+  }
+}
