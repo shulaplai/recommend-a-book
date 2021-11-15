@@ -1,30 +1,79 @@
-import React from "react"
+import styled from "@emotion/styled"
 import Link from "next/link"
-import NextImage from "../components/image"
+import Image from "next/image"
 
-const Cards = ({ article }) => {
+import propTypes from "prop-types"
+
+function Card({ movie, year }) {
+  const { API_URL } = process.env
+
+  if (!movie.genre) {
+    movie.genre = {}
+    movie.genre.slug = "uncategorised"
+  }
+
   return (
-    <div
-      className="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin"
-      uk-grid
-    >
-      <Link as={`/article/${article.slug}`} href="/article/[id]" passHref>
-        <div className="uk-card-media-left uk-cover-container uk-card-hover">
-          <NextImage
-            variant="left"
-            image={article.image}
-            width="300px"
-            hight="300px"
-            uk-cover
+    <CardStyled>
+      {movie.movie_poster && (
+        <div className="poster">
+          <Image
+            src={API_URL + movie.movie_poster.url}
+            width={movie.movie_poster.width}
+            height={movie.movie_poster.height}
           />
-
-          <div className="uk-card-body">
-            <h3 className="uk-card-title">{article.title}</h3>
-          </div>
         </div>
-      </Link>
-    </div>
+      )}
+      <div className="body">
+        <h3>
+          {movie.movie_title} - {year}
+        </h3>
+        <p dangerouslySetInnerHTML={{ __html: movie.description }} />
+
+        <Link
+          href="/movies/[genre]/[slug]"
+          as={`/movies/${movie.genre.slug}/${movie.slug}`}
+        >
+          <a>More about this movie</a>
+        </Link>
+      </div>
+    </CardStyled>
   )
 }
 
-export default Cards
+Card.propTypes = {
+  movie: propTypes.oneOfType([propTypes.object, propTypes.array]),
+  year: propTypes.number,
+}
+
+Card.defaultProps = {
+  year: 1984,
+}
+
+const CardStyled = styled.div`
+  width: 100%;
+  border: 1px solid #cccccc;
+  margin-top: 50px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+  .body {
+    padding: 20px;
+
+    h3 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #666666;
+      line-height: 1.5;
+    }
+
+    a {
+      display: inline-block;
+      margin: 20px 0;
+    }
+  }
+`
+
+export default Card
