@@ -12,6 +12,7 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
+    "@mui/material": "^5.1.0",
     "next": "^11.0.0",
     "react": "^17.0.0"
   },
