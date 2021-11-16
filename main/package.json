@@ -12,10 +12,12 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
+    "@emotion/react": "^11.6.0",
     "@mui/material": "^5.1.0",
     "next": "^11.0.0",
     "nookies": "^2.5.2",
-    "react": "^17.0.0"
+    "react": "^16.8.6",
+    "reflexbox": "^4.0.6"
   },
   "license": "MIT",
   "devDependencies": {
