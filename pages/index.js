@@ -11,13 +11,26 @@ import shuffle from "lodash/shuffle"
 
 const Home = ({ articles }) => {
   console.log(articles)
+  const [random, setRandom] = useState("")
 
-  const firstRandomElement = shuffle(articles)[0]
+  let firstRandomElement = shuffle(articles)[0]
+  function randomItem(articles) {
+    const firstRandomElement = shuffle(articles)[0]
+    setRandom(firstRandomElement.description)
+  }
+  const handleClick = () => {
+    randomItem()
+  }
   return (
     <Box variant="container">
-      <NextButtons></NextButtons>
-      <Content />
-      {firstRandomElement.description}<RevealButtons></RevealButtons>
+      <NextButtons onClick={handleClick}></NextButtons>
+
+      <Content article={firstRandomElement}></Content>
+      <div>
+        {firstRandomElement.description}
+        {random}
+      </div>
+      <RevealButtons></RevealButtons>
     </Box>
   )
 }
