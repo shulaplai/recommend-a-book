@@ -85,7 +85,11 @@ function AddArticle() {
             placeholder="article title"
           />
           <br />
-          <button type="button" onClick={() => addArticle()}>
+          <button
+            className="flex  content-center justify-center justify-self-auto bg-gray-300 hover:bg-gray-600 text-gray-800 font-semibold py-12 px-16 border border-gray-400 rounded shadow"
+            type="button"
+            onClick={() => addArticle()}
+          >
             Add article
           </button>
         </form>
