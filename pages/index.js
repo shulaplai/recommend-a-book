@@ -23,6 +23,7 @@ const Home = ({ articles }) => {
   const handleClick = () => {
     randomItem()
   }
+  
   return (
     <Box variant="container">
       <NextButtons onClick={handleClick}></NextButtons>
