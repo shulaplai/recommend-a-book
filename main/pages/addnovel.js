@@ -6,27 +6,36 @@ import { parseCookies } from "nookies"
 
 const { publicRuntimeConfig } = getConfig()
 
-function AddMovie() {
-  const [movieTitle, setMovieTitle] = useState("")
-  const [movieSlug, setMovieSlug] = useState("")
+function AddArticle() {
+  const [articleTitle, setArticleTitle] = useState("")
+  const [articleSlug, setArticleSlug] = useState("")
+  const [articleDescription, setArticleDescription] = useState("")
+  const [articleContent, setArticleContent] = useState("")
+  const [articleImage, setArticleImage] = useState("")
 
-  async function addMovie() {
+  async function addArticle() {
     const jwt = parseCookies().jwt
 
-    const movieInfo = {
-      movie_title: movieTitle,
-      slug: movieSlug,
+    const articleInfo = {
+      title: articleTitle,
+      slug: articleSlug,
+      description: articleDescription,
+      content: articleContent,
+      image: articleImage,
     }
 
-    const add = await fetch(`${publicRuntimeConfig.API_URL}/movies`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${jwt}`,
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(movieInfo),
-    })
+    const add = await fetch(
+      `https://recommendbook-api.herokuapp.com/articles`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(articleInfo),
+      }
+    )
 
     const addResponse = await add.json()
 
@@ -34,37 +43,58 @@ function AddMovie() {
   }
 
   return (
-    <AddMovieStyled>
+    <AddArticleStyled>
       <Box variant="container">
         <Box as="h2" my={40}>
-          Add movie
+          Add article
         </Box>
 
         <form>
           <input
             type="text"
-            onChange={(e) => setMovieTitle(e.target.value)}
-            value={movieTitle}
-            placeholder="Movie title"
+            onChange={(e) => setArticleTitle(e.target.value)}
+            value={articleTitle}
+            placeholder="article title"
           />
           <br />
           <input
             type="text"
-            onChange={(e) => setMovieSlug(e.target.value)}
-            value={movieSlug}
-            placeholder="Movie slug"
+            onChange={(e) => setArticleSlug(e.target.value)}
+            value={articleSlug}
+            placeholder="article slug"
           />
           <br />
-          <button type="button" onClick={() => addMovie()}>
-            Add Movie
+          <input
+            type="text"
+            onChange={(e) => setArticleDescription(e.target.value)}
+            value={articleDescription}
+            placeholder="article title"
+          />
+          <br />
+          <input
+            type="text"
+            onChange={(e) => setArticleContent(e.target.value)}
+            value={articleContent}
+            placeholder="article title"
+          />
+          <br />
+          <input
+            type="text"
+            onChange={(e) => setArticleImage(e.target.value)}
+            value={articleImage}
+            placeholder="article title"
+          />
+          <br />
+          <button type="button" onClick={() => addArticle()}>
+            Add article
           </button>
         </form>
       </Box>
-    </AddMovieStyled>
+    </AddArticleStyled>
   )
 }
 
-const AddMovieStyled = styled.div`
+const AddArticleStyled = styled.div`
   input {
     padding: 10px;
     margin-bottom: 20px;
@@ -73,4 +103,4 @@ const AddMovieStyled = styled.div`
   }
 `
 
-export default AddMovie
+export default AddArticle

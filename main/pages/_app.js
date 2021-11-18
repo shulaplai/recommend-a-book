@@ -1,43 +1,66 @@
-import App from "next/app"
-import Head from "next/head"
-import "../style.css"
-import { createContext } from "react"
-import { fetchAPI } from "../lib/api"
-import { getStrapiMedia } from "../lib/media"
-// import "tailwindcss/tailwind.css"
-import Nav from "../components/nav/nav.js"
+import { ThemeProvider } from "emotion-theming"
+import GlobalStyles from "components/GlobalStyles/GlobalStyles"
+import theme from "./theme/theme.js"
+import getConfig from "next/config"
+import fetch from "isomorphic-unfetch"
+import Router from "next/router"
+import { parseCookies } from "nookies"
+import { QueryClientProvider, QueryClient } from "react-query"
 
-// Store Strapi Global object in context
-export const GlobalContext = createContext({})
+const queryClient = new QueryClient()
 
-const MyApp = ({ Component, pageProps }) => {
-  const { global } = pageProps
 
-  return (<div>
-    <Nav/>
-      <Head>
-        <link
-          rel="shortcut icon"
-          href={getStrapiMedia(global.favicon)}
-          width="50px"
-          hight="100%"
-        />
-      </Head>
-      <GlobalContext.Provider value={global}>
-        <Component {...pageProps} />
-      </GlobalContext.Provider></div>
+function MyApp({ Component, pageProps, navigation }) {
+  console.log(navigation)
+
+  return (
+    <>
+      <DefaultSeo {...SEO} />
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <ContextWrapper navigation={navigation}>
+          <Header />
+        </ContextWrapper>
+        <QueryClientProvider client={queryClient}>
+          <Component {...pageProps} />
+        </QueryClientProvider>
+      </ThemeProvider>
+    </>
   )
 }
-// getInitialProps disables automatic static optimization for pages that don't
-// have getStaticProps. So article, category and home pages still get SSG.
-// Hopefully we can replace this with getStaticProps once this issue is fixed:
-// https://github.com/vercel/next.js/discussions/10949
-MyApp.getInitialProps = async (ctx) => {
-  // Calls page's `getInitialProps` and fills `appProps.pageProps`
-  const appProps = await App.getInitialProps(ctx)
-  // Fetch global site settings from Strapi
-  const global = await fetchAPI("/global")
-  // Pass the data to our page via props
-  return { ...appProps, pageProps: { global } }
+
+const { publicRuntimeConfig } = getConfig()
+
+function redirectUser(ctx, location) {
+  if (ctx.req) {
+    ctx.res.writeHead(302, { Location: location })
+    ctx.res.end()
+  } else {
+    Router.push(location)
+  }
 }
-export default MyApp
+
+MyApp.getInitialProps = async ({ Component, ctx }) => {
+  let pageProps = {}
+  const jwt = parseCookies(ctx).jwt
+
+  const res = await fetch(`${publicRuntimeConfig.API_URL}/navigations`)
+  const navigation = await res.json()
+
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx)
+  }
+
+  if (!jwt) {
+    if (ctx.pathname === "/payed-articles") {
+      redirectUser(ctx, "/login")
+    }
+  }
+
+  return {
+    pageProps,
+    navigation,
+  }
+}
+
+export default appWithTranslation(MyApp)
