@@ -3,7 +3,7 @@ import Select from 'react-select'
 import {useQuery, useQueryClient} from 'react-query'
 import {useState} from 'react'
 
-const { API_URL } = process.env
+const { API_URL } = `https://recommendbook-api.herokuapp.com/articles`
 
 const getMovies = async(key) => {
     console.log(key)

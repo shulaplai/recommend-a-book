@@ -4,36 +4,32 @@ import Image from "next/image"
 
 import propTypes from "prop-types"
 
-function Card({ movie, year }) {
-  const { API_URL } = process.env
+function Card({ article}) {
 
-  if (!movie.genre) {
-    movie.genre = {}
-    movie.genre.slug = "uncategorised"
-  }
+  const { API_URL } = `https://recommendbook-api.herokuapp.com/articles`
 
   return (
     <CardStyled>
-      {movie.movie_poster && (
+      {article.image && (
         <div className="poster">
           <Image
-            src={API_URL + movie.movie_poster.url}
-            width={movie.movie_poster.width}
-            height={movie.movie_poster.height}
+            src={API_URL + article.image.url}
+            width={article.image.width}
+            height={article.image.height}
           />
         </div>
       )}
       <div className="body">
         <h3>
-          {movie.movie_title} - {year}
+          {article.title} 
         </h3>
-        <p dangerouslySetInnerHTML={{ __html: movie.description }} />
+        <p dangerouslySetInnerHTML={{ __html: article.description }} />
 
         <Link
-          href="/movies/[genre]/[slug]"
-          as={`/movies/${movie.genre.slug}/${movie.slug}`}
+          href="/articles/[slug]"
+          as={`/articles/${article.slug}`}
         >
-          <a>More about this movie</a>
+          <a>More about this article</a>
         </Link>
       </div>
     </CardStyled>
@@ -41,12 +37,7 @@ function Card({ movie, year }) {
 }
 
 Card.propTypes = {
-  movie: propTypes.oneOfType([propTypes.object, propTypes.array]),
-  year: propTypes.number,
-}
-
-Card.defaultProps = {
-  year: 1984,
+  article: propTypes.oneOfType([propTypes.object, propTypes.array]),
 }
 
 const CardStyled = styled.div`

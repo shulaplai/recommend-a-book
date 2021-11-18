@@ -6,7 +6,7 @@ import fetch from "isomorphic-unfetch"
 import Router from "next/router"
 import { parseCookies } from "nookies"
 import { QueryClientProvider, QueryClient } from "react-query"
-
+import Nav from "../components/nav/nav.js"
 const queryClient = new QueryClient()
 
 
@@ -18,9 +18,9 @@ function MyApp({ Component, pageProps, navigation }) {
       <DefaultSeo {...SEO} />
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <ContextWrapper navigation={navigation}>
-          <Header />
-        </ContextWrapper>
+        <Nav/>
+          
+       
         <QueryClientProvider client={queryClient}>
           <Component {...pageProps} />
         </QueryClientProvider>
@@ -51,11 +51,7 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
     pageProps = await Component.getInitialProps(ctx)
   }
 
-  if (!jwt) {
-    if (ctx.pathname === "/payed-articles") {
-      redirectUser(ctx, "/login")
-    }
-  }
+ 
 
   return {
     pageProps,
@@ -63,4 +59,3 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
   }
 }
 
-export default appWithTranslation(MyApp)

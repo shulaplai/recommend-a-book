@@ -10,13 +10,13 @@ export const SidebarData = [
   },
   {
     title: "Cover",
-    path: "https://roastedtea.click/category/translation",
+    path: "./cover",
     icon: <HiDesktopComputer />,
     cName: "nav-text",
   },
   {
     title: "Submit",
-    path: "https://roastedtea.click/category/tech",
+    path: "./addArticle",
     icon: <HiDesktopComputer />,
     cName: "nav-text",
   },
