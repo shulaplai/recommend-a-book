@@ -29,7 +29,6 @@ export default function Cover() {
   )
 }
 export async function getServerSideProps() {
-  const { API_URL } = `https://recommendbook-api.herokuapp.com/articles`
 
   const res = await fetch(`https://recommendbook-api.herokuapp.com/articles`)
   const data = await res.json()

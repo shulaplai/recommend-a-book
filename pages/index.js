@@ -8,7 +8,7 @@ import RevealButtons from "../components/buttonreveal.js"
 
 import Content from "../components/content.js"
 
-const Home = ({ articles }) => {
+export const Home = ({ articles }) => {
   console.log(articles)
 
   return (
@@ -23,12 +23,9 @@ const Home = ({ articles }) => {
 }
 
 
-export async function getServerSideProps() {
-  const { API_URL } = `https://recommendbook-api.herokuapp.com/articles`
+export async function getStaticProps() {
 
-  const res = await fetch(
-    `https://recommendbook-api.herokuapp.com/articles`
-  )
+  const res = await fetch(`https://recommendbook-api.herokuapp.com/articles`)
   const data = await res.json()
 
   return {

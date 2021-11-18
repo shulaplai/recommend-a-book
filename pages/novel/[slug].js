@@ -31,7 +31,6 @@ function article({ article }) {
   )
 }
 
-const { publicRuntimeConfig } = getConfig()
 
 export async function getServerSideProps(context) {
   const { slug } = context.query

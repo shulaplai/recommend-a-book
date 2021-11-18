@@ -31,8 +31,6 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
   let pageProps = {}
   const jwt = parseCookies(ctx).jwt
 
-  const res = await fetch(`${publicRuntimeConfig.API_URL}/navigations`)
-  const navigation = await res.json()
 
   if (Component.getInitialProps) {
     pageProps = await Component.getInitialProps(ctx)
@@ -42,7 +40,6 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
 
   return {
     pageProps,
-    navigation,
   }
 }
 
