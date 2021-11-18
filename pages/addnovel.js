@@ -29,7 +29,7 @@ function AddArticle() {
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${jwt}`,
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjM3MjUxODQyLCJleHAiOjE2Mzk4NDM4NDJ9.EPA22FcevYV-23yYpGu-0sEa-EAjQVJ-UTm6o3jgRGw`,
           Accept: "application/json",
           "Content-Type": "application/json",
         },
