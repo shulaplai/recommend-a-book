@@ -12,6 +12,7 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
+    "@babel/plugin-proposal-do-expressions": "^7.16.0",
     "@emotion/react": "^11.6.0",
     "@mui/material": "^5.1.0",
     "emotion-theming": "^11.0.0",
