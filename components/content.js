@@ -2,10 +2,6 @@ import * as React from "react"
 
 
 
-export default function Content() {
-  return (
-    <div>
-        "a class"
-    </div>
-  )
+export default function Content(article) {
+  return <div>{article.description }</div>
 }
