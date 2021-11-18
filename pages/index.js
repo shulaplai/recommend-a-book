@@ -8,22 +8,21 @@ import RevealButtons from "../components/buttonreveal.js"
 
 import Content from "../components/content.js"
 
-export const Home = ({ articles }) => {
+ const Home = ({ articles }) => {
   console.log(articles)
 
   return (
     <Box variant="container">
       <NextButtons></NextButtons>
       <Content></Content>
-      <Box my={40} as="h2">
-      </Box>
+     
     <RevealButtons></RevealButtons>
     </Box>
   )
 }
 
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 
   const res = await fetch(`https://recommendbook-api.herokuapp.com/articles`)
   const data = await res.json()
@@ -35,3 +34,4 @@ export async function getStaticProps() {
   }
 }
 
+export default Home

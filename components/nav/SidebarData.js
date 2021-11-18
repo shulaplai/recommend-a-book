@@ -13,7 +13,7 @@ export const SidebarData = [
   },
   {
     title: "Submit",
-    path: "./addArticle",
+    path: "./addnovel",
     cName: "nav-text",
   },
 ]

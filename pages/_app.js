@@ -12,8 +12,6 @@ function MyApp({ Component, pageProps, navigation }) {
 
   return (
     <>
-      <DefaultSeo {...SEO} />
-        <GlobalStyles />
         <Nav/>
           
        

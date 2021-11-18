@@ -104,3 +104,16 @@ const AddArticleStyled = styled.div`
 `
 
 export default AddArticle
+
+
+
+export async function getServerSideProps() {
+  const res = await fetch(`https://recommendbook-api.herokuapp.com/articles`)
+  const data = await res.json()
+
+  return {
+    props: {
+      articles: data,
+    },
+  }
+}
