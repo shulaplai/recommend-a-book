@@ -1,6 +1,3 @@
-import { ThemeProvider } from "emotion-theming"
-import GlobalStyles from "components/GlobalStyles/GlobalStyles"
-import theme from "./theme/theme.js"
 import getConfig from "next/config"
 import fetch from "isomorphic-unfetch"
 import Router from "next/router"
@@ -16,7 +13,6 @@ function MyApp({ Component, pageProps, navigation }) {
   return (
     <>
       <DefaultSeo {...SEO} />
-      <ThemeProvider theme={theme}>
         <GlobalStyles />
         <Nav/>
           
@@ -24,21 +20,12 @@ function MyApp({ Component, pageProps, navigation }) {
         <QueryClientProvider client={queryClient}>
           <Component {...pageProps} />
         </QueryClientProvider>
-      </ThemeProvider>
     </>
   )
 }
 
 const { publicRuntimeConfig } = getConfig()
 
-function redirectUser(ctx, location) {
-  if (ctx.req) {
-    ctx.res.writeHead(302, { Location: location })
-    ctx.res.end()
-  } else {
-    Router.push(location)
-  }
-}
 
 MyApp.getInitialProps = async ({ Component, ctx }) => {
   let pageProps = {}
@@ -59,3 +46,4 @@ MyApp.getInitialProps = async ({ Component, ctx }) => {
   }
 }
 
+export default MyApp

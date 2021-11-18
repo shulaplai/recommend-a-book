@@ -28,17 +28,15 @@ export default function Cover() {
     </Card>
   )
 }
+export async function getServerSideProps() {
+  const { API_URL } = `https://recommendbook-api.herokuapp.com/articles`
 
-export async function getStaticProps() {
-  // Run API calls in parallel
-  const [articles, categories, homepage] = await Promise.all([
-    fetchAPI("/articles"),
-    fetchAPI("/categories"),
-    fetchAPI("/homepage"),
-  ])
+  const res = await fetch(`https://recommendbook-api.herokuapp.com/articles`)
+  const data = await res.json()
 
   return {
-    props: { articles, categories, homepage },
-    revalidate: 1,
+    props: {
+      articles: data,
+    },
   }
 }

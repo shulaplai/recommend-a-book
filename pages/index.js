@@ -1,10 +1,8 @@
 import fetch from "isomorphic-unfetch"
-import Card from "components/Card"
+// import Card from "components/Card"
 import { Flex, Box } from "reflexbox"
-import { withTranslation } from "../i18n"
 import Image from "next/image"
 
-import propTypes from "prop-types"
 import NextButtons from "../components/button.js"
 import RevealButtons from "../components/buttonreveal.js"
 
@@ -24,10 +22,6 @@ const Home = ({ articles }) => {
   )
 }
 
-Home.propTypes = {
-  t: propTypes.func.isRequired,
-  articles: propTypes.array.isRequired,
-}
 
 export async function getServerSideProps() {
   const { API_URL } = `https://recommendbook-api.herokuapp.com/articles`
@@ -44,4 +38,3 @@ export async function getServerSideProps() {
   }
 }
 
-export default withTranslation()(Home)
