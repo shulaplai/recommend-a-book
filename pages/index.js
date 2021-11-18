@@ -9,16 +9,15 @@ import RevealButtons from "../components/buttonreveal.js"
 import Content from "../components/content.js"
 import shuffle from "lodash/shuffle"
 
-
 const Home = ({ articles }) => {
   console.log(articles)
+
   const firstRandomElement = shuffle(articles)[0]
   return (
     <Box variant="container">
       <NextButtons></NextButtons>
-      {shuffle(articles)[0](<Content />
-      {firstRandomElement.description})} 
-      <RevealButtons></RevealButtons>
+      <Content />
+      {firstRandomElement.description}<RevealButtons></RevealButtons>
     </Box>
   )
 }
