@@ -2,6 +2,7 @@ import fetch from "isomorphic-unfetch"
 // import Card from "components/Card"
 import { Flex, Box } from "reflexbox"
 import Image from "next/image"
+import React, { useEffect, useState } from "react"
 
 import NextButtons from "../components/button.js"
 import RevealButtons from "../components/buttonreveal.js"
@@ -14,9 +15,10 @@ const Home = ({ articles }) => {
   const [random, setRandom] = useState("")
 
   let firstRandomElement = shuffle(articles)[0]
-  function randomItem(articles) {
-    const firstRandomElement = shuffle(articles)[0]
-    setRandom(firstRandomElement.description)
+  function randomItem() {
+    const randomElement = shuffle(articles)[0]
+    setRandom(randomElement)
+    console.log(randomElement)
   }
   const handleClick = () => {
     randomItem()
@@ -25,12 +27,12 @@ const Home = ({ articles }) => {
     <Box variant="container">
       <NextButtons onClick={handleClick}></NextButtons>
 
-      <Content article={firstRandomElement}></Content>
+      <Content></Content>
       <div>
         {firstRandomElement.description}
-        {random}
+        <p>{random}</p> 
       </div>
-      <RevealButtons></RevealButtons>
+      <RevealButtons onClick={console.log("ss")}></RevealButtons>
     </Box>
   )
 }
