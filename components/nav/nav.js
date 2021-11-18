@@ -5,9 +5,15 @@ import Image from "next/image"
 import { FaBars } from "react-icons/fa"
 import { AiOutlineClose } from "react-icons/ai"
 import React, { useState } from "react"
-
+import "../../style.css"
 import { SidebarData } from "./SidebarData"
 import { IconContext } from "react-icons"
+import AppBar from "@mui/material/AppBar"
+import Box from "@mui/material/Box"
+import Toolbar from "@mui/material/Toolbar"
+import Typography from "@mui/material/Typography"
+import Button from "@mui/material/Button"
+import IconButton from "@mui/material/IconButton"
 
 const Nav = () => {
   const [sidebar, setSidebar] = useState(false)
@@ -15,14 +21,18 @@ const Nav = () => {
   const showSidebar = () => setSidebar(!sidebar)
 
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-10">
-      <div className="flex items-center flex-shrink-0 text-black ">
-        <IconContext.Provider value={{ color: "#fff" }}>
-          <div className="navbar">
-            <a className="menu-bars">
-              <FaBars onClick={showSidebar} />
-            </a>
-          </div>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <FaBars onClick={showSidebar} />
+          </IconButton>
           <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
             <ul className="nav-menu-items" onClick={showSidebar}>
               <li className="navbar-toggle">
@@ -30,6 +40,7 @@ const Nav = () => {
                   <AiOutlineClose />
                 </a>
               </li>
+
               {SidebarData.map((item, index) => {
                 return (
                   <li key={index} className={item.cName}>
@@ -43,32 +54,14 @@ const Nav = () => {
               })}
             </ul>
           </nav>
-        </IconContext.Provider>
-      </div>
-
-      <div className="w-full mx-10	block flex-grow lg:flex lg:items-center lg:w-auto">
-        <div className="text-sm lg:flex-grow ">
-          <a
-            href="#responsive-header"
-            className="block mt-4 lg:inline-block lg:mt-0  mr-4"
-          >
-            Read
-          </a>
-          <a
-            href="#responsive-header"
-            className="block mt-4 lg:inline-block lg:mt-0  mr-4"
-          >
-            Cover
-          </a>
-          <a
-            href="#responsive-header"
-            className="block mt-4 lg:inline-block lg:mt-0  hover:text-color-red"
-          >
-            Submit
-          </a>
-        </div>
-      </div>
-    </nav>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            News
+          </Typography>
+          <Button color="inherit">Login</Button>
+        </Toolbar>
+      </AppBar>
+    </Box>
   )
 }
+
 export default Nav
