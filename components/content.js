@@ -2,6 +2,11 @@ import * as React from "react"
 
 
 
-export default function Content(article) {
-  return <div>{article.description }</div>
+export default function Content(randomItem) {
+  console.log(randomItem)
+  return (
+    <div>
+      <div>aaaasasa{randomItem.description}</div>
+    </div>
+  )
 }

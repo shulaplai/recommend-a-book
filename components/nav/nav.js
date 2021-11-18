@@ -29,8 +29,9 @@ const Nav = () => {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            onClick={showSidebar}
           >
-            <FaBars onClick={showSidebar} />
+            <FaBars />
           </IconButton>
           <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
             <ul className="nav-menu-items" onClick={showSidebar}>
@@ -53,15 +54,10 @@ const Nav = () => {
               })}
             </ul>
           </nav>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Read
-          </Typography>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Cover
-          </Typography>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Submit
-          </Typography>
+
+          <Button color="inherit">Read</Button>
+          <Button color="inherit">Cover</Button>
+          <Button color="inherit">Submit</Button>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
