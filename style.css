@@ -3,9 +3,22 @@
 @tailwind components;
 @tailwind utilities;
 
+.button {
+  align-items: flex-start;
+  background-color: #ebebeb;
+  border-radius: 24px;
+  color: #505050;
+  font-family: Rubik;
+  font-size: 24px;
+  letter-spacing: 2px;
+  line-height: 30px;
+  margin: 50px 280px 60px;
+  padding: 20px;
+  text-align: center;
+}
 :root {
   font-size: 16px;
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   --text-primary: #b6b6b6;
   --text-secondary: #ececec;
   --bg-primary: #23232e;
@@ -22,7 +35,7 @@
   padding-right: 30%;
   color: #000000;
   height: auto;
-   font-size: 20px;
+  font-size: 20px;
   font-style: italic;
   font-weight: bold;
   font-variant: small-caps;
@@ -39,7 +52,6 @@ intro:hover {
   padding-left: 45%;
   padding-right: 40%;
 }
-
 
 body::-webkit-scrollbar {
   width: 0.25rem;
@@ -134,7 +146,7 @@ span {
 }
 
 .ukcard {
- color: #666666;
+  color: #666666;
   width: 400px;
   height: 400px;
   display: flex;

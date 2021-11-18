@@ -1,14 +1,13 @@
+
 import styled from "@emotion/styled"
 import Link from "next/link"
 import Image from "next/image"
 
-
-function Card({ article}) {
-
+function RevealCard({ article }) {
   const { API_URL } = `https://recommendbook-api.herokuapp.com/articles`
 
   return (
-    <CardStyled>
+    <RevealCardStyled>
       {article.image && (
         <div className="poster">
           <Image
@@ -19,24 +18,18 @@ function Card({ article}) {
         </div>
       )}
       <div className="body">
-        <h3>
-          {article.title} 
-        </h3>
+        <h3>{article.title}</h3>
         <p dangerouslySetInnerHTML={{ __html: article.description }} />
 
-        <Link
-          href="/articles/[slug]"
-          as={`/articles/${article.slug}`}
-        >
+        <Link href="/articles/[slug]" as={`/articles/${article.slug}`}>
           <a>More about this article</a>
         </Link>
       </div>
-    </CardStyled>
+    </RevealCardStyled>
   )
 }
 
-
-const CardStyled = styled.div`
+const RevealCardStyled = styled.div`
   width: 100%;
   border: 1px solid #cccccc;
   margin-top: 50px;
@@ -63,4 +56,4 @@ const CardStyled = styled.div`
   }
 `
 
-export default Card
+export default RevealCard

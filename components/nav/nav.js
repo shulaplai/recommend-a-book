@@ -55,7 +55,13 @@ const Nav = () => {
             </ul>
           </nav>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+            Read
+          </Typography>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Cover
+          </Typography>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Submit
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>

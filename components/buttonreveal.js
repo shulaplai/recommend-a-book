@@ -4,14 +4,8 @@ import Stack from "@mui/material/Stack"
 
 export default function RevealButtons() {
   return (
-    <Stack direction="row" spacing={2}>
-      <Button variant="contained">Contained</Button>
-      <Button variant="contained" disabled>
-        Disabled
-      </Button>
-      <Button variant="contained" href="#contained-buttons">
-        Link
-      </Button>
-    </Stack>
+    
+      <Button variant="contained">Reveal</Button>
+     
   )
 }
