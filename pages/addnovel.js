@@ -11,8 +11,12 @@ function AddArticle() {
   const [articleSlug, setArticleSlug] = useState("")
   const [articleDescription, setArticleDescription] = useState("")
   const [articleContent, setArticleContent] = useState("")
-  const [articleImage, setArticleImage] = useState("")
-
+  const [articleImage, setArticleImage] = useState()
+  const [isFilePicked, setIsFilePicked] = useState(false)
+  const changeHandler = (event) => {
+    setArticleImage(event.target.files[0])
+    setIsFilePicked(true)
+  }
   async function addArticle() {
     const jwt = parseCookies().jwt
 
@@ -44,12 +48,11 @@ function AddArticle() {
   }
 
   return (
-    <AddArticleStyled>
+    <div className="flex my-16	 justify-center items-center">
       <Box variant="container">
         <Box as="h2" my={40}>
           Add article
         </Box>
-
         <form className="w-full max-w-lg">
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -63,77 +66,51 @@ function AddArticle() {
                 onChange={(e) => setArticleTitle(e.target.value)}
                 value={articleTitle}
                 placeholder="article title"
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                id="grid-first-name"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                 type="text"
-                placeholder="Jane"
-              />
-              <p className="text-red-500 text-xs italic">
-                Please fill out this field.
-              </p>
-            </div>
-            <div className="w-full md:w-1/2 px-3">
-              <label
-                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                htmlFor="grid-last-name"
-              >
-                Slug{" "}
-              </label>
-              <input
-                type="text"
-                onChange={(e) => setArticleSlug(e.target.value)}
-                value={articleSlug}
-                placeholder="article slug"
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="grid-last-name"
-                type="text"
-                placeholder="Doe"
+                placeholder="Title and author"
               />
             </div>
           </div>
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full px-3">
-              <label
-                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                htmlFor="grid-password"
-              >
+              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 description{" "}
               </label>
-              <input
+              <textarea
                 type="text"
                 onChange={(e) => setArticleDescription(e.target.value)}
                 value={articleDescription}
-                placeholder="article title"
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                placeholder="article feeling"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-16 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-password"
-                type="password"
-                placeholder="******************"
+                type="text"
               />
-              <p className="text-gray-600 text-xs italic">
-                Make it as long and as crazy as you'd like
-              </p>
             </div>
           </div>
           <div className="flex flex-wrap -mx-3 mb-2">
-            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+            <div className="w-full ">
               <label
                 className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                 htmlFor="grid-city"
               >
                 Content{" "}
               </label>
-              <input
+              <p className="text-gray-600 text-xs italic">
+                Make it 100-500words
+              </p>
+              <textarea
                 type="text"
                 onChange={(e) => setArticleContent(e.target.value)}
                 value={articleContent}
                 placeholder="article title"
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-20 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-city"
                 type="text"
                 placeholder="Albuquerque"
               />
             </div>
-            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+            <div className="w-full ">
               <label
                 className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                 htmlFor="grid-state"
@@ -168,31 +145,42 @@ function AddArticle() {
                           </p>
                         </div>
                         <input
-                          onChange={(e) => setArticleImage(e.target.value)}
+                          onChange={changeHandler}
                           type="file"
                           className="opacity-0"
                         />
                       </label>
                     </div>
                   </div>
+                  {isFilePicked ? (
+                    <div>
+                      <p>Filename: {articleImage.name}</p>
+                      <p>Filetype: {articleImage.type}</p>
+                      <p>Size in bytes: {articleImage.size}</p>
+                      <p>
+                        lastModifiedDate:{" "}
+                        {articleImage.lastModifiedDate.toLocaleDateString()}
+                      </p>
+                    </div>
+                  ) : (
+                    <p>Select a file to show details</p>
+                  )}
                   <div className="flex justify-center p-2">
-                    <button
+                    <input
                       type="file"
-                      onChange={(e) => setArticleImage(e.target.value)}
+                      onChange={changeHandler}
                       className="w-full px-4 py-2 text-white bg-blue-500 rounded shadow-xl"
-                    >
-                      Create
-                    </button>
+                    />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+          <div className="w-full flex justify-center items-center">
             <button
               type="button"
               onClick={() => addArticle()}
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="block items-center justify-center appearance-none  w-1/3 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-zip"
               type="text"
               placeholder="90210"
@@ -201,19 +189,11 @@ function AddArticle() {
             </button>
           </div>
         </form>
-      </Box>
-    </AddArticleStyled>
+      </Box>{" "}
+    </div>
   )
 }
 
-const AddArticleStyled = styled.div`
-  input {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-  }
-`
 
 export default AddArticle
 

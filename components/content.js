@@ -26,10 +26,10 @@ export default function Content({ article }) {
 
   return (
     <div>
-      <div class="flex my-16	 justify-center items-center">
+      <div className="flex my-16	 justify-center items-center">
         <button
           onClick={handleClick}
-          class="flex  content-center justify-center justify-self-auto bg-gray-300 hover:bg-gray-600 text-gray-800 font-semibold py-12 px-16 border border-gray-400 rounded shadow"
+          className="flex  content-center justify-center justify-self-auto bg-gray-300 hover:bg-gray-600 text-gray-800 font-semibold py-12 px-16 border border-gray-400 rounded shadow"
         >
           Next
         </button>
@@ -38,7 +38,7 @@ export default function Content({ article }) {
       <div>
         <p>{random}</p>
       </div>
-      <div class="my-16	flex h-screen justify-center items-center">
+      <div className="my-16	flex h-screen justify-center items-center">
         <button
           onClick={() => setShowModal(true)}
           className="flex  content-center justify-center justify-self-auto bg-gray-300 hover:bg-gray-600 text-gray-800 font-semibold py-12 px-16 border border-gray-400 rounded shadow"
