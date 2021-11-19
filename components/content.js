@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 import Image from "next/image"
 
 export default function Content({ article }) {
-  console.log(article)
   const [random, setRandom] = useState("")
   const [reveal, setReveal] = useState("")
   const [cover, setCover] = useState("")
@@ -15,7 +14,7 @@ export default function Content({ article }) {
   const randomItem = () => {
     let randomNum = Math.floor(Math.random() * article.length)
     let randomElement = article[randomNum]
-    setRandom(randomElement.description)
+    setRandom(randomElement.content)
     setReveal(randomElement.title)
     setCover(randomElement.image.url)
   }
@@ -29,40 +28,42 @@ export default function Content({ article }) {
       <div className="flex my-16	 justify-center items-center">
         <button
           onClick={handleClick}
-          className="flex  content-center justify-center justify-self-auto bg-gray-300 hover:bg-gray-600 text-gray-800 font-semibold py-12 px-16 border border-gray-400 rounded shadow"
+          className="  bg-gray-300 hover:bg-green-400 text-4xl		text-gray-800 font-semibold py-8 px-8 border-dashed border-4 border-light-blue-500 rounded-3xl	"
         >
-          Next
+          下一本
         </button>
       </div>
 
-      <div>
-        <p>{random}</p>
+      <div className="flex 	 justify-center items-center  border-none border-4  h-auto  ">
+        <div className="justify-center items-center	 h-auto  ">{random}</div>
       </div>
-      <div className="my-16	flex h-screen justify-center items-center">
+      <div className="my-4	flex  justify-center items-center">
         <button
           onClick={() => setShowModal(true)}
-          className="flex  content-center justify-center justify-self-auto bg-gray-300 hover:bg-gray-600 text-gray-800 font-semibold py-12 px-16 border border-gray-400 rounded shadow"
+          className="  bg-gray-300 hover:bg-green-400 text-4xl		text-gray-800 font-semibold py-8 px-8 border-dashed border-4 border-light-blue-500 rounded-3xl	"
         >
           Reveal
         </button>
-        {showModal ? (
-          <div>
-           <Image
-              src={cover}
-              width={300}
-              height={300}
-             
-            /> 
-            <p>{reveal}</p>
+        <br />
+      </div>
+      {showModal ? (
+        <div>
+          <div className="flex 	 justify-center items-center ">
+            <Image src={cover} width={150} height={225} />
+            <div className=" h-1/2 text-3xl		text-gray-800 font-semibold">
+              {reveal}
+            </div>{" "}
+          </div>
+          <div className="flex 	 justify-center items-center ">
             <button
               onClick={handleClick}
-              className="flex  content-center justify-center justify-self-auto bg-gray-300 hover:bg-gray-600 text-gray-800 font-semibold py-12 px-16 border border-gray-400 rounded shadow"
+              className=" h-1/2	bg-gray-300 hover:bg-green-400 text-4xl		text-gray-800 font-semibold py-8 px-8 border-dashed border-4 border-light-blue-500 rounded-3xl	"
             >
               Next
             </button>
-          </div>
-        ) : null}
-      </div>
+          </div>{" "}
+        </div>
+      ) : null}
     </div>
   )
 }

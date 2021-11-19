@@ -4,6 +4,7 @@ import getConfig from "next/config"
 import { useState } from "react"
 import { parseCookies } from "nookies"
 // import UploadImage from "../components/uploadimage.js"
+import Editor from "../components/texteditor.js"
 const { publicRuntimeConfig } = getConfig()
 
 function AddArticle() {
@@ -53,6 +54,7 @@ function AddArticle() {
         <Box as="h2" my={40}>
           Add article
         </Box>
+
         <form className="w-full max-w-lg">
           <div className="flex flex-wrap -mx-3 mb-6">
             <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -77,6 +79,7 @@ function AddArticle() {
               <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 description{" "}
               </label>
+              <Editor></Editor>
               <textarea
                 type="text"
                 onChange={(e) => setArticleDescription(e.target.value)}
@@ -99,15 +102,15 @@ function AddArticle() {
               <p className="text-gray-600 text-xs italic">
                 Make it 100-500words
               </p>
+              <Editor></Editor>
               <textarea
                 type="text"
                 onChange={(e) => setArticleContent(e.target.value)}
                 value={articleContent}
-                placeholder="article title"
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-20 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-city"
                 type="text"
-                placeholder="Albuquerque"
+                placeholder="Content"
               />
             </div>
             <div className="w-full ">
