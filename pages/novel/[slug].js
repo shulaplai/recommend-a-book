@@ -1,24 +1,14 @@
 import { Box, Flex } from "reflexbox"
 import getConfig from "next/config"
 import fetch from "isomorphic-unfetch"
-import { NextSeo } from "next-seo"
 
 function article({ article }) {
   console.log(article)
 
-  const SEO = {
-    title: `Next articles | ${article.title}`,
-    description: article.description,
-
-    openGraph: {
-      title: `Next articles | ${article.title}`,
-      description: article.title,
-    },
-  }
+ 
 
   return (
     <>
-      <NextSeo {...SEO} />
       <Box variant="container">
         <Box as="h2" my={40}>
           {article.title}
