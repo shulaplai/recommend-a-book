@@ -8,7 +8,7 @@ export const SidebarData = [
   },
   {
     title: "Cover",
-    path: "./cover",
+    path: "./novel",
     cName: "nav-text",
   },
   {
