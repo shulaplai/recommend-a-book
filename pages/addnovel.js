@@ -46,10 +46,15 @@ function AddArticle() {
       .catch((error) => {
         console.log("Error: ", error.response.data)
       })
-  // const addResponse = await add.json()
-  // console.log(addResponse)
-  // alert("sucessfully add")
+  
   }
+    // const articleInfo = {
+    //   title: articleTitle,
+    //   slug: articleSlug,
+    //   description: articleDescription,
+    //   content: articleContent,
+    //   image: articleImage,
+    // }
   //  POST
   // axios({
   //   method: "post",
@@ -71,7 +76,9 @@ function AddArticle() {
   //     body: JSON.stringify(articleInfo),
   //   }
   // )
-
+// const addResponse = await add.json()
+  // console.log(addResponse)
+  // alert("sucessfully add")
 
   return (
     <div className="flex my-16	 justify-center items-center">
