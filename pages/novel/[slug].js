@@ -1,38 +1,58 @@
-import { Box, Flex } from "reflexbox"
-import getConfig from "next/config"
 import fetch from "isomorphic-unfetch"
+import Image from "next/image"
 
-function article({ article }) {
+function Article({ article }) {
   console.log(article)
 
  
 
   return (
     <>
-      <Box variant="container">
-        <Box as="h2" my={40}>
+      <div >
+        <Image src={article.image.url} width={300} height={300} />
+        
           {article.title}
-        </Box>
-        <Box maxWidth={600}>
-          <p dangerouslySetInnerHTML={{ __html: article.description }}></p>
-        </Box>
-      </Box>
+        
+        <div Width={600}>
+          {article.description}
+          {article.content}
+          
+        </div>
+      </div>
     </>
   )
 }
 
 
-export async function getServerSideProps(context) {
-  const { slug } = context.query
+export async function getStaticPaths() {
   const res = await fetch(
-    `https://recommendbook-api.herokuapp.com/articles?slug=${slug}`
+    "https://recommendbook-api.herokuapp.com/articles"
   )
   const data = await res.json()
+
+  return {
+    paths: data.map((article) => ({
+      params: {
+        slug: article.slug,
+      },
+    })),
+    fallback: false,
+  }
+}
+
+
+export async function getStaticProps({ params }) {
+  const res = await fetch(
+    `https://recommendbook-api.herokuapp.com/articles?slug=${params.slug}`
+  )
+  const data = await res.json()
+
   return {
     props: {
       article: data[0],
     },
+    revalidate: 1,
   }
 }
 
-export default article
+export default Article

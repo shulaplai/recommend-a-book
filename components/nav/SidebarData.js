@@ -1,9 +1,8 @@
-import React from "react"
 
 export const SidebarData = [
   {
     title: "Read a Page",
-    path: "./",
+    path: "/",
     cName: "nav-text",
   },
   {

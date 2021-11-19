@@ -19,7 +19,7 @@ const Home = ({ articles }) => {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch(`https://recommendbook-api.herokuapp.com/articles`)
   const data = await res.json()
 
