@@ -28,7 +28,7 @@ export default function Content({ article }) {
       <div className="flex my-16	 justify-center items-center">
         <button
           onClick={handleClick}
-          className="  bg-gray-300 hover:bg-green-400 text-4xl		text-gray-800 font-semibold py-8 px-8 border-dashed border-4 border-light-blue-500 rounded-3xl	"
+          className="  bg-gray-300 hover:bg-green-400 text-4xl		text-gray-800 font-semi bold py-8 px-8 border-dashed border-4 border-light-blue-500 rounded-3xl	"
         >
           下一本
         </button>
@@ -40,7 +40,7 @@ export default function Content({ article }) {
       <div className="my-4	flex  justify-center items-center">
         <button
           onClick={() => setShowModal(true)}
-          className="  bg-gray-300 hover:bg-green-400 text-4xl		text-gray-800 font-semibold py-8 px-8 border-dashed border-4 border-light-blue-500 rounded-3xl	"
+          className="  bg-gray-300 hover:bg-green-400 text-4xl		text-gray-800 font-semi bold py-8 px-8 border-dashed border-4 border-light-blue-500 rounded-3xl	"
         >
           Reveal
         </button>
@@ -50,14 +50,14 @@ export default function Content({ article }) {
         <div>
           <div className="flex 	 justify-center items-center ">
             <Image src={cover} width={150} height={225} />
-            <div className=" h-1/2 text-3xl		text-gray-800 font-semibold">
+            <div className=" h-1/2 text-3xl		text-gray-800 font-semi bold">
               {reveal}
             </div>{" "}
           </div>
           <div className="flex 	 justify-center items-center ">
             <button
               onClick={handleClick}
-              className=" h-1/2	bg-gray-300 hover:bg-green-400 text-4xl		text-gray-800 font-semibold py-8 px-8 border-dashed border-4 border-light-blue-500 rounded-3xl	"
+              className=" h-1/2	bg-gray-300 hover:bg-green-400 text-4xl		text-gray-800 font-semi bold py-8 px-8 border-dashed border-4 border-light-blue-500 rounded-3xl	"
             >
               Next
             </button>

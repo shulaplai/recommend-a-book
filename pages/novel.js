@@ -1,6 +1,4 @@
-import fetch from "isomorphic-unfetch"
 import { Flex, Box } from "reflexbox"
-import { useRouter } from "next/router"
 import Image from "next/image"
 import Link from "next/link"
 

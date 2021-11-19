@@ -1,4 +1,3 @@
-import fetch from "isomorphic-unfetch"
 // import Card from "components/Card"
 import { Flex, Box } from "reflexbox"
 import React, { useEffect, useState } from "react"

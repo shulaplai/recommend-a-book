@@ -1,6 +1,4 @@
-import getConfig from "next/config"
-import fetch from "isomorphic-unfetch"
-import Router from "next/router"
+
 import { parseCookies } from "nookies"
 import { QueryClientProvider, QueryClient } from "react-query"
 import Nav from "../components/nav/nav.js"
