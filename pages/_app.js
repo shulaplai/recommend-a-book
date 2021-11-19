@@ -3,7 +3,6 @@ import { parseCookies } from "nookies"
 import { QueryClientProvider, QueryClient } from "react-query"
 import Nav from "../components/nav/nav.js"
 import "../style.css"
-import "quill/dist/quill.snow.css" 
 
 const queryClient = new QueryClient()
 
