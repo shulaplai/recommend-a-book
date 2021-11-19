@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { parseCookies } from "nookies"
 import React, { useEffect } from "react"
+import axios from "axios"
 
 function AddArticle() {
   const [articleTitle, setArticleTitle] = useState("")
@@ -15,40 +16,60 @@ function AddArticle() {
     setIsFilePicked(true)
   }
 
-  async function addArticle(e) {
+  async function addArticle() {
     const jwt = parseCookies().jwt
- e.preventDefault()
 
- const formData = new FormData()
+    var formData = new FormData()
 
- Array.from(this.state.images).forEach((image) => {
-   formData.append("files", image)
- })
-    const articleInfo = {
-      title: articleTitle,
-      slug: articleSlug,
+    formData.append("image", articleImage)
+    formData.append("title", articleTitle)
+    formData.append("slug", articleSlug)
+    formData.append("description", articleDescription)
+    formData.append("content", articleContent)
 
-      description: articleDescription,
-      content: articleContent,
-      image: articleImage,
-    }
-    const add = await fetch(
-      `https://recommendbook-api.herokuapp.com/articles`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjM3MjUxODQyLCJleHAiOjE2Mzk4NDM4NDJ9.EPA22FcevYV-23yYpGu-0sEa-EAjQVJ-UTm6o3jgRGw`,
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(articleInfo),
-      }
-    )
-
-    const addResponse = await add.json()
-    console.log(addResponse)
-    alert("sucessfully add")
+    axios({
+      method: "POST",
+      url: `https://recommendbook-api.herokuapp.com/articles`,
+      data: formData,
+      headers: {
+        Accept: "multipart/form-data",
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjM3MjUxODQyLCJleHAiOjE2Mzk4NDM4NDJ9.EPA22FcevYV-23yYpGu-0sEa-EAjQVJ-UTm6o3jgRGw`,
+      },
+    })
+      .then(({ data }) => {
+        setResponse(data)
+        console.log("Succesfully uploaded: ", JSON.stringify(data))
+      })
+      .catch((error) => {
+        console.log("Error: ", error.response.data)
+      })
   }
+  //  POST
+  // axios({
+  //   method: "post",
+  //   url: "/user/12345",
+  //   data: {
+  //     firstName: "Fred",
+  //     lastName: "Flintstone",
+  //   },
+  // })
+  // const add = await fetch(
+  //   `https://recommendbook-api.herokuapp.com/articles`,
+  //   {
+  //     method: "POST",
+  //     headers: {
+  //       Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjM3MjUxODQyLCJleHAiOjE2Mzk4NDM4NDJ9.EPA22FcevYV-23yYpGu-0sEa-EAjQVJ-UTm6o3jgRGw`,
+  //       Accept: "application/json",
+  //       "Content-Type": "multipart/form-data",
+  //     },
+  //     body: JSON.stringify(articleInfo),
+  //   }
+  // )
+
+  // const addResponse = await add.json()
+  // console.log(addResponse)
+  // alert("sucessfully add")
 
   return (
     <div className="flex my-16	 justify-center items-center">
@@ -149,10 +170,9 @@ function AddArticle() {
                           Attach a file
                         </p>
                       </div>
-                      <input 
-                      type="file"
+                      <input
+                        type="file"
                         onChange={changeHandler}
-                       
                         className="opacity-0"
                       />
                     </label>
