@@ -27,7 +27,7 @@ function AddArticle() {
     formData.append("description", articleDescription)
     formData.append("content", articleContent)
 
-    axios({
+      await axios({
       method: "POST",
       url: `https://recommendbook-api.herokuapp.com/articles`,
       data: formData,
@@ -37,6 +37,8 @@ function AddArticle() {
         Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjM3MjUxODQyLCJleHAiOjE2Mzk4NDM4NDJ9.EPA22FcevYV-23yYpGu-0sEa-EAjQVJ-UTm6o3jgRGw`,
       },
     })
+      
+
       .then(({ data }) => {
         setResponse(data)
         console.log("Succesfully uploaded: ", JSON.stringify(data))
@@ -44,6 +46,9 @@ function AddArticle() {
       .catch((error) => {
         console.log("Error: ", error.response.data)
       })
+  // const addResponse = await add.json()
+  // console.log(addResponse)
+  // alert("sucessfully add")
   }
   //  POST
   // axios({
@@ -67,9 +72,6 @@ function AddArticle() {
   //   }
   // )
 
-  // const addResponse = await add.json()
-  // console.log(addResponse)
-  // alert("sucessfully add")
 
   return (
     <div className="flex my-16	 justify-center items-center">
@@ -195,7 +197,7 @@ function AddArticle() {
         <div className="w-full flex justify-center items-center">
           <button
             type="button"
-            onClick={() => addArticle()}
+            onClick={addArticle}
             className="block items-center justify-center appearance-none  w-1/3 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           >
             Submit
