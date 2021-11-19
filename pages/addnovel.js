@@ -3,9 +3,14 @@ import styled from "@emotion/styled"
 import getConfig from "next/config"
 import { useState } from "react"
 import { parseCookies } from "nookies"
+
+import { useQuill } from "react-quilljs"
+// or const { useQuill } = require('react-quilljs');
+
+import "quill/dist/quill.snow.css" // Add css for snow theme
+// or import 'quill/dist/quill.bubble.css'; // Add css for bubble theme
 // import UploadImage from "../components/uploadimage.js"
-import Editor from "../components/texteditor.js"
-const { publicRuntimeConfig } = getConfig()
+// import Editor from "../components/texteditor.js"
 
 function AddArticle() {
   const [articleTitle, setArticleTitle] = useState("")
@@ -18,12 +23,14 @@ function AddArticle() {
     setArticleImage(event.target.files[0])
     setIsFilePicked(true)
   }
+
   async function addArticle() {
     const jwt = parseCookies().jwt
 
     const articleInfo = {
       title: articleTitle,
       slug: articleSlug,
+
       description: articleDescription,
       content: articleContent,
       image: articleImage,
@@ -67,7 +74,6 @@ function AddArticle() {
               <input
                 onChange={(e) => setArticleTitle(e.target.value)}
                 value={articleTitle}
-                placeholder="article title"
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                 type="text"
                 placeholder="Title and author"
@@ -79,7 +85,6 @@ function AddArticle() {
               <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                 description{" "}
               </label>
-              <Editor></Editor>
               <textarea
                 type="text"
                 onChange={(e) => setArticleDescription(e.target.value)}
@@ -87,11 +92,10 @@ function AddArticle() {
                 placeholder="article feeling"
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-16 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-password"
-                type="text"
               />
             </div>
           </div>
-          <div className="flex flex-wrap -mx-3 mb-2">
+          <div className="flex flex-wrap -mx-3 mb-12">
             <div className="w-full ">
               <label
                 className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -102,23 +106,20 @@ function AddArticle() {
               <p className="text-gray-600 text-xs italic">
                 Make it 100-500words
               </p>
-              <Editor></Editor>
-              <textarea
-                type="text"
-                onChange={(e) => setArticleContent(e.target.value)}
-                value={articleContent}
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-20 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="grid-city"
-                type="text"
-                placeholder="Content"
-              />
+              <div>
+                <textarea
+                  type="text"
+                  onChange={(e) => setArticleContent(e.target.value)}
+                  value={articleContent}
+                  placeholder="article feeling"
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-16 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="grid-password"
+                />
+              </div>
             </div>
-            <div className="w-full ">
-              <label
-                className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                htmlFor="grid-state"
-              >
-                Image{" "}
+            <div className=" 	w-full ">
+              <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                Image
               </label>
               <div className="flex justify-center mt-8">
                 <div className="max-w-2xl rounded-lg shadow-xl bg-gray-50">
@@ -196,7 +197,6 @@ function AddArticle() {
     </div>
   )
 }
-
 
 export default AddArticle
 
