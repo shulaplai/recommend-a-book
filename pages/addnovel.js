@@ -1,16 +1,6 @@
 import { Box } from "reflexbox"
-import styled from "@emotion/styled"
-import getConfig from "next/config"
 import { useState } from "react"
 import { parseCookies } from "nookies"
-
-import { useQuill } from "react-quilljs"
-// or const { useQuill } = require('react-quilljs');
-
-import "quill/dist/quill.snow.css" // Add css for snow theme
-// or import 'quill/dist/quill.bubble.css'; // Add css for bubble theme
-// import UploadImage from "../components/uploadimage.js"
-// import Editor from "../components/texteditor.js"
 
 function AddArticle() {
   const [articleTitle, setArticleTitle] = useState("")
@@ -185,9 +175,6 @@ function AddArticle() {
               type="button"
               onClick={() => addArticle()}
               className="block items-center justify-center appearance-none  w-1/3 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-zip"
-              type="text"
-              placeholder="90210"
             >
               Submit
             </button>

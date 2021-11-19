@@ -24,7 +24,6 @@ function MyApp({ Component, pageProps, navigation }) {
   )
 }
 
-const { publicRuntimeConfig } = getConfig()
 
 
 MyApp.getInitialProps = async ({ Component, ctx }) => {
