@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react"
 import Image from "next/image"
+import {ReactMarkdown} from "react-markdown"
 
 export default function Content({ article }) {
   const [random, setRandom] = useState("")
-  const [reveal, setReveal] = useState("")
+  const [revealTitle, setRevealTitle] = useState("")
+    const [revealDescription, setRevealDescription] = useState("")
+
   const [cover, setCover] = useState("")
 
   const [showModal, setShowModal] = React.useState(false)
@@ -15,7 +18,8 @@ export default function Content({ article }) {
     let randomNum = Math.floor(Math.random() * article.length)
     let randomElement = article[randomNum]
     setRandom(randomElement.content)
-    setReveal(randomElement.title)
+    setRevealTitle(randomElement.title)
+    setRevealDescription(randomElement.description)
     setCover(randomElement.image.url)
   }
   const handleClick = () => {
@@ -35,7 +39,9 @@ export default function Content({ article }) {
       </div>
 
       <div className="flex 	 justify-center items-center  border-none border-4  h-auto  ">
-        <div className="justify-center items-center	 h-auto  ">{random}</div>
+        <div className="justify-center items-center	mx-28	 h-auto py-8 px-8 border-dashed border-4 border-light-blue-500 rounded-3xl ">
+          <ReactMarkdown>{random}</ReactMarkdown>
+        </div>
       </div>
       <div className="my-4	flex  justify-center items-center">
         <button
@@ -48,10 +54,13 @@ export default function Content({ article }) {
       </div>
       {showModal ? (
         <div>
-          <div className="flex 	 justify-center items-center ">
-            <Image src={cover} width={150} height={225} />
-            <div className=" h-1/2 text-3xl		text-gray-800 font-semi bold">
-              {reveal}
+          <div className="flex 	justify-center items-center	mx-28	 h-auto py-8 px-20 border-dashed border-4 border-light-blue-500 rounded-3xl">
+            <Image src={cover} width={150} height={225} layout="fixed" />
+            <div className="  text-4xl	justify-center items-center		text-gray-800 font-semi bold">
+              <ReactMarkdown>{revealTitle}</ReactMarkdown>
+              <ReactMarkdown className="text-sm	">
+                {revealDescription}
+              </ReactMarkdown>
             </div>{" "}
           </div>
           <div className="flex 	 justify-center items-center ">

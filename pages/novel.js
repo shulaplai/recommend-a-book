@@ -6,28 +6,28 @@ function ArticlesPage( {articles}) {
 
 
   return (
-    <Box variant="container" pt={40}>
-      <div>
-        {articles.map((article) => (
-          <Link as={`/novel/${article.slug}`} href="/novel/[id]" passHref>
-            <div key={article.id}>
-              <div className="max-w-sm rounded overflow-hidden shadow-lg">
-                <Image
-                  width={300}
-                  height={300}
-                  src={article.image.url}
-                  alt="image"
-                />
-                <div className="px-6 py-4">
-                  <div className="font-bold text-xl mb-2">{article.title}</div>
-                  <p className="text-gray-700 text-base">{article.content}</p>
-                </div>
+    <div>
+      {articles.map((article) => (
+        <Link as={`/novel/${article.slug}`} href="/novel/[id]" passHref>
+          <div
+            key={article.id}
+            className="flex  	justify-center items-center		 m-10 "
+          >
+            <div className=" 		w-40	rounded overflow-hidden shadow-lg">
+              <Image
+                width={160}
+                height={200}
+                src={article.image.url}
+                alt="image"
+              />
+              <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2">{article.title}</div>
               </div>
             </div>
-          </Link>
-        ))}
-      </div>
-    </Box>
+          </div>
+        </Link>
+      ))}
+    </div>
   )
 }
 

@@ -58,7 +58,6 @@ const Nav = () => {
           <Button color="inherit">Read</Button>
           <Button color="inherit">Cover</Button>
           <Button color="inherit">Submit</Button>
-          <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </Box>
