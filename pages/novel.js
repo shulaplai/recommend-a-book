@@ -6,6 +6,7 @@ function ArticlesPage( {articles}) {
 
 
   return (
+    <Box>
     <div>
       {articles.map((article) => (
         <Link as={`/novel/${article.slug}`} href="/novel/[id]" passHref>
@@ -27,7 +28,7 @@ function ArticlesPage( {articles}) {
           </div>
         </Link>
       ))}
-    </div>
+    </div></Box>
   )
 }
 

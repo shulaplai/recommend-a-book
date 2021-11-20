@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react"
 import Image from "next/image"
-import {ReactMarkdown} from "react-markdown"
-
+import ReactMarkdown from "react-markdown"
+//reactmarkdown cannot use {}, or it will fail
 export default function Content({ article }) {
   const [random, setRandom] = useState("")
   const [revealTitle, setRevealTitle] = useState("")
-    const [revealDescription, setRevealDescription] = useState("")
+  const [revealDescription, setRevealDescription] = useState("")
 
   const [cover, setCover] = useState("")
 

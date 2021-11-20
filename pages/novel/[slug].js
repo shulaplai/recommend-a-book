@@ -1,16 +1,17 @@
 import Image from "next/image"
-import { ReactMarkdown } from "react-markdown"
+import ReactMarkdown from "react-markdown"
 
 function Article({ article }) {
   return (
     <>
       <div className="flex 	 justify-center items-center  border-none border-4  h-auto  ">
-        <div className="justify-center items-center	mx-28	 h-auto py-8 px-8 border-dashed border-4 border-light-blue-500 rounded-3xl ">
+        <div className="justify-center items-center	mx-28	 h-auto py-8 px-8 rounded-3xl ">
           {article.title}
           <div className="flex 	justify-center items-center	mx-28	 h-auto py-8 px-20 border-dashed border-4 border-light-blue-500 rounded-3xl">
-            <div className="  	text-gray-800 font-semi bold">
-              <ReactMarkdown>{article.content}</ReactMarkdown>
-            </div>
+            <ReactMarkdown className="  	text-gray-800 font-semi bold">
+              {article.content}
+            </ReactMarkdown>
+
             <Image
               src={article.image.url}
               width={150}
@@ -18,9 +19,9 @@ function Article({ article }) {
               layout="fixed"
             />
           </div>{" "}
-          <ReactMarkdown className="text-sm	">
+          {/* <ReactMarkdown className="text-sm	">
             {article.description}
-          </ReactMarkdown>
+          </ReactMarkdown> */}
         </div>
       </div>
     </>
