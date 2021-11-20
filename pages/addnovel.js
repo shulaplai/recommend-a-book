@@ -16,70 +16,90 @@ function AddArticle() {
     setIsFilePicked(true)
   }
 
-  async function addArticle() {
+  async function addCover(event) {
     const jwt = parseCookies().jwt
+    event.preventDefault()
 
     var formData = new FormData()
 
-    formData.append("image", articleImage)
-    formData.append("title", articleTitle)
-    formData.append("slug", articleSlug)
-    formData.append("description", articleDescription)
-    formData.append("content", articleContent)
+    formData.append("files", articleImage)
+    // formData.append("title", articleTitle)
+    // formData.append("slug", articleSlug)
+    // formData.append("description", articleDescription)
+    // formData.append("content", articleContent)
 
-      await axios({
+    // Array.from(articleImage).forEach((image) => {
+    //   formData.append("files", image)
+    // })
+    //  axios
+    //    .post(`https://recommendbook-api.herokuapp.com/articles`, formData, {
+    //      headers: {
+    //        "Content-Type": "multipart/form-data",
+    //        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjM3MjUxODQyLCJleHAiOjE2Mzk4NDM4NDJ9.EPA22FcevYV-23yYpGu-0sEa-EAjQVJ-UTm6o3jgRGw`,
+    //      },
+    //    })
+    //    .then((res) => {
+    //      console.log(res)
+    //    })
+    //    .catch((err) => {
+    //      console.log("Error: ", err.response.data)
+    //    })
+    await axios({
       method: "POST",
-      url: `https://recommendbook-api.herokuapp.com/articles`,
+      url: `https://recommendbook-api.herokuapp.com/upload`,
       data: formData,
       headers: {
-        Accept: "multipart/form-data",
+        // Accept: "multipart/form-data",
         "Content-Type": "multipart/form-data",
         Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjM3MjUxODQyLCJleHAiOjE2Mzk4NDM4NDJ9.EPA22FcevYV-23yYpGu-0sEa-EAjQVJ-UTm6o3jgRGw`,
       },
     })
-      
+      .then((res) => {
+        alert("sucessfully add")
 
-      .then(({ data }) => {
-        setResponse(data)
-        console.log("Succesfully uploaded: ", JSON.stringify(data))
+        console.log("Succesfully uploaded: ", res)
       })
       .catch((error) => {
-        console.log("Error: ", error.response.data)
+        console.log("Error: ", error.response)
       })
-  
   }
-    // const articleInfo = {
-    //   title: articleTitle,
-    //   slug: articleSlug,
-    //   description: articleDescription,
-    //   content: articleContent,
-    //   image: articleImage,
-    // }
-  //  POST
-  // axios({
-  //   method: "post",
-  //   url: "/user/12345",
-  //   data: {
-  //     firstName: "Fred",
-  //     lastName: "Flintstone",
-  //   },
-  // })
-  // const add = await fetch(
-  //   `https://recommendbook-api.herokuapp.com/articles`,
-  //   {
-  //     method: "POST",
-  //     headers: {
-  //       Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjM3MjUxODQyLCJleHAiOjE2Mzk4NDM4NDJ9.EPA22FcevYV-23yYpGu-0sEa-EAjQVJ-UTm6o3jgRGw`,
-  //       Accept: "application/json",
-  //       "Content-Type": "multipart/form-data",
-  //     },
-  //     body: JSON.stringify(articleInfo),
-  //   }
-  // )
-// const addResponse = await add.json()
-  // console.log(addResponse)
-  // alert("sucessfully add")
+  async function addArticle() {
+    const articleInfo = {
+      title: articleTitle,
+      slug: articleSlug,
+      description: articleDescription,
+      content: articleContent,
+    }
+    //  POST
+    // axios({
+    //   method: "post",
+    //   url: "/user/12345",
+    //   data: {
+    //     firstName: "Fred",
+    //     lastName: "Flintstone",
+    //   },
+    // })
+    await axios({
+      url: `https://recommendbook-api.herokuapp.com/articles`,
 
+      method: "POST",
+      data: articleInfo,
+      headers: {
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjM3MjUxODQyLCJleHAiOjE2Mzk4NDM4NDJ9.EPA22FcevYV-23yYpGu-0sEa-EAjQVJ-UTm6o3jgRGw`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      // body: JSON.stringify(articleInfo),
+    })
+      .then((res) => {
+        alert("sucessfully add")
+
+        console.log("Succesfully uploaded: ", res)
+      })
+      .catch((error) => {
+        console.log("Error: ", error.response)
+      })
+  }
   return (
     <div className="flex my-16	 justify-center items-center">
       <form className="w-full max-w-lg">
@@ -208,6 +228,15 @@ function AddArticle() {
             className="block items-center justify-center appearance-none  w-1/3 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           >
             Submit
+          </button>
+        </div>
+        <div className="w-full flex justify-center items-center">
+          <button
+            type="button"
+            onClick={addCover}
+            className="block items-center justify-center appearance-none  w-1/3 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          >
+            Submit Cover
           </button>
         </div>
       </form>
