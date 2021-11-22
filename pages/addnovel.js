@@ -21,27 +21,7 @@ function AddArticle() {
     var formData = new FormData()
 
     formData.append("files", articleImage)
-    // formData.append("title", articleTitle)
-    // formData.append("slug", articleSlug)
-    // formData.append("description", articleDescription)
-    // formData.append("content", articleContent)
-
-    // Array.from(articleImage).forEach((image) => {
-    //   formData.append("files", image)
-    // })
-    //  axios
-    //    .post(`https://recommendbook-api.herokuapp.com/articles`, formData, {
-    //      headers: {
-    //        "Content-Type": "multipart/form-data",
-    //        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjM3MjUxODQyLCJleHAiOjE2Mzk4NDM4NDJ9.EPA22FcevYV-23yYpGu-0sEa-EAjQVJ-UTm6o3jgRGw`,
-    //      },
-    //    })
-    //    .then((res) => {
-    //      console.log(res)
-    //    })
-    //    .catch((err) => {
-    //      console.log("Error: ", err.response.data)
-    //    })
+    
     await axios({
       method: "POST",
       url: `https://recommendbook-api.herokuapp.com/upload`,
@@ -67,15 +47,6 @@ function AddArticle() {
       description: articleDescription,
       content: articleContent,
     }
-    //  POST
-    // axios({
-    //   method: "post",
-    //   url: "/user/12345",
-    //   data: {
-    //     firstName: "Fred",
-    //     lastName: "Flintstone",
-    //   },
-    // })
     await axios({
       url: `https://recommendbook-api.herokuapp.com/articles`,
 
@@ -229,7 +200,7 @@ function AddArticle() {
 
 export default AddArticle
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch(`https://recommendbook-api.herokuapp.com/articles`)
   const data = await res.json()
 
