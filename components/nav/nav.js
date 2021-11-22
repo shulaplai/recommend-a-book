@@ -54,13 +54,13 @@ const Nav = () => {
             </ul>
           </nav>
           <Link href="./">
-            <Button color="inherit">Read</Button>
+            <Button color="inherit">閱讀小說</Button>
           </Link>
           <Link href="./novel">
-            <Button color="inherit">Cover</Button>
+            <Button color="inherit">小說封面</Button>
           </Link>
           <Link href="./addnovel">
-            <Button color="inherit">Submit</Button>
+            <Button color="inherit">提交新小說</Button>
           </Link>
         </Toolbar>
       </AppBar>

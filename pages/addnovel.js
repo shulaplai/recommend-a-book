@@ -106,7 +106,7 @@ function AddArticle() {
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               htmlFor="grid-first-name"
             >
-              Title of the novel
+              書名
             </label>
             <input
               onChange={(e) => setArticleTitle(e.target.value)}
@@ -120,7 +120,7 @@ function AddArticle() {
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full px-3">
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-              description{" "}
+              簡介{" "}
             </label>
             <textarea
               type="text"
@@ -138,9 +138,9 @@ function AddArticle() {
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               htmlFor="grid-city"
             >
-              Content{" "}
+              內容節選{" "}
             </label>
-            <p className="text-gray-600 text-xs italic">Make it 100-500words</p>
+            <p className="text-gray-600 text-xs italic">300-600字</p>
             <div>
               <textarea
                 type="text"
@@ -154,13 +154,13 @@ function AddArticle() {
           </div>
           <div className="  px-3	w-full ">
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-              Image
+              封面
             </label>
             <div className="flex justify-center mt-8">
               <div className="max-w-2xl rounded-lg shadow-xl bg-gray-50">
                 <div className="m-4">
                   <label className="inline-block mb-2 text-gray-500">
-                    File Upload
+                    上傳檔案
                   </label>
                   <div className="flex items-center justify-center w-full">
                     <label className="flex flex-col w-full h-32 border-4 border-blue-300 border-dashed hover:bg-gray-100 hover:border-gray-300">
@@ -193,11 +193,11 @@ function AddArticle() {
                 </div>
                 {isFilePicked ? (
                   <div>
-                    <p>Filename: {articleImage.name}</p>
-                    <p>Filetype: {articleImage.type}</p>
+                    <p>檔案名字: {articleImage.name}</p>
+                    <p>檔案:類型: {articleImage.type}</p>
                   </div>
                 ) : (
-                  <p>Select a file to show details</p>
+                  <p>上傳檔案以顯示檔案資料</p>
                 )}
                 <div className="flex justify-center p-2"></div>
               </div>
@@ -210,7 +210,7 @@ function AddArticle() {
             onClick={addCover}
             className="bg-gray-300 hover:bg-green-400 text-4xl		text-gray-800 font-semi bold py-8 px-8 border-dashed border-4 border-light-blue-500 rounded-3xl	"
           >
-            Submit Cover
+            提交封面
           </button>
         </div>
         <div className="w-full mt-12	 flex justify-center items-center">
@@ -219,7 +219,7 @@ function AddArticle() {
             onClick={addArticle}
             className="bg-gray-300 hover:bg-green-400 text-4xl		text-gray-800 font-semi bold py-8 px-8 border-dashed border-4 border-light-blue-500 rounded-3xl	"
           >
-            Submit Novel
+            提交小說
           </button>
         </div>
       </form>

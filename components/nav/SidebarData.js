@@ -1,17 +1,17 @@
 
 export const SidebarData = [
   {
-    title: "Read a Page",
+    title: "閱讀小說",
     path: "/",
     cName: "nav-text",
   },
   {
-    title: "Cover",
+    title: "小說封面",
     path: "./novel",
     cName: "nav-text",
   },
   {
-    title: "Submit",
+    title: "提交新小說",
     path: "./addnovel",
     cName: "nav-text",
   },
