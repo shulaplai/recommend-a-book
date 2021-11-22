@@ -1,5 +1,4 @@
 import { useState } from "react"
-import { parseCookies } from "nookies"
 import React, { useEffect } from "react"
 import axios from "axios"
 
@@ -17,7 +16,6 @@ function AddArticle() {
   }
 
   async function addCover(event) {
-    const jwt = parseCookies().jwt
     event.preventDefault()
 
     var formData = new FormData()

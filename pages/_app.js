@@ -1,21 +1,15 @@
 
-import { parseCookies } from "nookies"
-import { QueryClientProvider, QueryClient } from "react-query"
 import Nav from "../components/nav/nav.js"
 import "../style.css"
 
-const queryClient = new QueryClient()
 
-function MyApp({ Component, pageProps, navigation }) {
-  console.log(navigation)
+function MyApp({  pageProps  }) {
 
   return (
     <><div className="bg-gray-200	">
       <Nav />
       
-        <QueryClientProvider client={queryClient}>
           <Component {...pageProps} />
-        </QueryClientProvider>
       </div>
     </>
   )
@@ -23,20 +17,11 @@ function MyApp({ Component, pageProps, navigation }) {
 
 
 
-MyApp.getInitialProps = async ({ Component, ctx }) => {
-  let pageProps = {}
-  const jwt = parseCookies(ctx).jwt
-
-
-  if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx)
-  }
-
- 
-
-  return {
-    pageProps,
-  }
+MyApp.getInitialProps = async (ctx) => {
+  // Calls page's `getInitialProps` and fills `appProps.pageProps`
+  const appProps = await App.getInitialProps(ctx)
+  // Fetch global site settings from Strapi
+  // Pass the data to our page via props
+  return { ...appProps, pageProps: { global } }
 }
-
 export default MyApp
