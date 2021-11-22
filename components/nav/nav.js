@@ -20,7 +20,7 @@ const Nav = () => {
   const showSidebar = () => setSidebar(!sidebar)
 
   return (
-    <Box sx={{ flexGrow: 1 }} >
+    <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" className="bg-white	">
         <Toolbar>
           <IconButton
@@ -54,10 +54,15 @@ const Nav = () => {
               })}
             </ul>
           </nav>
-
-          <Button color="inherit">Read</Button>
-          <Button color="inherit">Cover</Button>
-          <Button color="inherit">Submit</Button>
+          <Link href="./">
+            <Button color="inherit">Read</Button>
+          </Link>
+          <Link href="./novel">
+            <Button color="inherit">Cover</Button>
+          </Link>
+          <Link href="./addnovel">
+            <Button color="inherit">Submit</Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </Box>

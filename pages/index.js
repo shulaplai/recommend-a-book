@@ -6,7 +6,6 @@ import React, { useEffect, useState } from "react"
 import Content from "../components/content.js"
 
 const Home = ({ articles }) => {
-  console.log(articles)
   
 
   return (

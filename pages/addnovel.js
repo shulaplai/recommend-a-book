@@ -100,8 +100,8 @@ function AddArticle() {
       })
   }
   return (
-    <div className="flex my-16	 justify-center items-center">
-      <form className="w-full max-w-lg">
+    <div className="flex mt-16	 justify-center items-center">
+      <form className=" w-full max-w-lg">
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label
@@ -113,11 +113,11 @@ function AddArticle() {
             <input
               onChange={(e) => setArticleTitle(e.target.value)}
               value={articleTitle}
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              className="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               type="text"
               placeholder="Title and author"
             />
-            </div>
+          </div>
         </div>
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full px-3">
@@ -129,13 +129,13 @@ function AddArticle() {
               onChange={(e) => setArticleDescription(e.target.value)}
               value={articleDescription}
               placeholder="article feeling"
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-16 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-300 rounded py-16 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-password"
             />
           </div>
         </div>
         <div className="flex flex-wrap -mx-3 mb-12">
-          <div className="w-full ">
+          <div className="w-full px-3">
             <label
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               htmlFor="grid-city"
@@ -149,12 +149,12 @@ function AddArticle() {
                 onChange={(e) => setArticleContent(e.target.value)}
                 value={articleContent}
                 placeholder="article feeling"
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-16 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                className="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-300 rounded py-16 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-password"
               />
             </div>
           </div>
-          <div className=" 	w-full ">
+          <div className="  px-3	w-full ">
             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
               Image
             </label>
@@ -165,10 +165,10 @@ function AddArticle() {
                     File Upload
                   </label>
                   <div className="flex items-center justify-center w-full">
-                    <label className="flex flex-col w-full h-32 border-4 border-blue-200 border-dashed hover:bg-gray-100 hover:border-gray-300">
+                    <label className="flex flex-col w-full h-32 border-4 border-blue-300 border-dashed hover:bg-gray-100 hover:border-gray-300">
                       <div className="flex flex-col items-center justify-center pt-7">
                         <svg
-                          xmlns="http://www.w3.org/2000/svg"
+                          xmlns="http://www.w3.org/3000/svg"
                           className="w-8 h-8 text-gray-400 group-hover:text-gray-600"
                           fill="none"
                           viewBox="0 0 24 24"
@@ -197,7 +197,6 @@ function AddArticle() {
                   <div>
                     <p>Filename: {articleImage.name}</p>
                     <p>Filetype: {articleImage.type}</p>
-                    <p>Size in bytes: {articleImage.size}</p>
                   </div>
                 ) : (
                   <p>Select a file to show details</p>
@@ -210,19 +209,19 @@ function AddArticle() {
         <div className="w-full flex justify-center items-center">
           <button
             type="button"
-            onClick={addArticle}
-            className="block items-center justify-center appearance-none  w-1/3 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          >
-            Submit
-          </button>
-        </div>
-        <div className="w-full flex justify-center items-center">
-          <button
-            type="button"
             onClick={addCover}
-            className="block items-center justify-center appearance-none  w-1/3 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            className="bg-gray-300 hover:bg-green-400 text-4xl		text-gray-800 font-semi bold py-8 px-8 border-dashed border-4 border-light-blue-500 rounded-3xl	"
           >
             Submit Cover
+          </button>
+        </div>
+        <div className="w-full mt-12	 flex justify-center items-center">
+          <button
+            type="button"
+            onClick={addArticle}
+            className="bg-gray-300 hover:bg-green-400 text-4xl		text-gray-800 font-semi bold py-8 px-8 border-dashed border-4 border-light-blue-500 rounded-3xl	"
+          >
+            Submit Novel
           </button>
         </div>
       </form>
