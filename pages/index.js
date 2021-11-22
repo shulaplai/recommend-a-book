@@ -1,5 +1,4 @@
 // import Card from "components/Card"
-import { Flex, Box } from "reflexbox"
 import React, { useEffect, useState } from "react"
 
 
@@ -9,9 +8,9 @@ const Home = ({ articles }) => {
   
 
   return (
-    <Box variant="container">
+    <div>
      <Content article={articles}></Content>
-    </Box>
+    </div>
   )
 }
 

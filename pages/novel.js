@@ -19,7 +19,7 @@ function ArticlesPage({ articles }) {
                   alt="image"
                 />
                 <div className="px-6 py-4">
-                  <div className="font-bold text-xl mb-2">{article.title}</div>
+                  <div className="font-bold text-xl ">{article.title}</div>
                 </div>
               </div>
             </div>

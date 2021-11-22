@@ -20,8 +20,8 @@ const Nav = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" className="bg-white	">
-        <Toolbar>
+      <AppBar position="static">
+        <Toolbar className="bg-white	text-black	">
           <IconButton
             size="large"
             edge="start"
@@ -36,7 +36,7 @@ const Nav = () => {
             <ul className="nav-menu-items" onClick={showSidebar}>
               <li className="navbar-toggle">
                 <a className="menu-bars">
-                  <AiOutlineClose />
+                  <AiOutlineClose className="text-white" />
                 </a>
               </li>
 

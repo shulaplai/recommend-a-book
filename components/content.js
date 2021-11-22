@@ -29,7 +29,7 @@ export default function Content({ article }) {
 
   return (
     <div>
-      <div className="flex my-16	 justify-center items-center">
+      <div className="flex mt-16	 justify-center items-center">
         <button
           onClick={handleClick}
           className="  bg-gray-300 hover:bg-green-400 text-4xl		text-gray-800 font-semi bold py-8 px-8 border-dashed border-4 border-light-blue-500 rounded-3xl	"
@@ -43,7 +43,7 @@ export default function Content({ article }) {
           <ReactMarkdown>{random}</ReactMarkdown>
         </div>
       </div>
-      <div className="my-4	flex  justify-center items-center">
+      <div className="mt-4	flex  justify-center items-center">
         <button
           onClick={() => setShowModal(true)}
           className="  bg-gray-300 hover:bg-green-400 text-4xl		text-gray-800 font-semi bold py-8 px-8 border-dashed border-4 border-light-blue-500 rounded-3xl	"
@@ -66,11 +66,11 @@ export default function Content({ article }) {
           <div className="flex 	 justify-center items-center ">
             <button
               onClick={handleClick}
-              className=" h-1/2	bg-gray-300 hover:bg-green-400 text-4xl		text-gray-800 font-semi bold py-8 px-8 border-dashed border-4 border-light-blue-500 rounded-3xl	"
+              className=" h-1/2	bg-gray-300 hover:bg-green-400 text-4xl		text-gray-800 font-semi bold py-8 px-8 border-dashed border-4 rounded-3xl	"
             >
               Next
             </button>
-          </div>{" "}
+          </div>
         </div>
       ) : null}
     </div>
