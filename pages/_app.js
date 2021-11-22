@@ -10,13 +10,13 @@ function MyApp({ Component, pageProps, navigation }) {
   console.log(navigation)
 
   return (
-    <>
-        <Nav/>
-          
-       
+    <><div className="bg-gray-200	">
+      <Nav />
+      
         <QueryClientProvider client={queryClient}>
           <Component {...pageProps} />
         </QueryClientProvider>
+      </div>
     </>
   )
 }

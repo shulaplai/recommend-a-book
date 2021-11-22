@@ -20,8 +20,8 @@ const Nav = () => {
   const showSidebar = () => setSidebar(!sidebar)
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <Box sx={{ flexGrow: 1 }} >
+      <AppBar position="static" className="bg-white	">
         <Toolbar>
           <IconButton
             size="large"
