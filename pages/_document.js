@@ -16,18 +16,6 @@ class MyDocument extends Document {
           />
           <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-          <script
-            async
-            src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"
-          />
-          <script
-            async
-            src="https://cdn.jsdelivr.net/npm/uikit@3.2.3/dist/js/uikit-icons.min.js"
-          />
-          <script
-            async
-            src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.js"
-          />
         </Head>
         <body>
           <Main />
