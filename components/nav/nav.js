@@ -56,7 +56,7 @@ const Nav = () => {
           <Link href="./">
             <Button color="inherit">閱讀小說</Button>
           </Link>
-          <Link href="./novel">
+          <Link href="./cover">
             <Button color="inherit">小說封面</Button>
           </Link>
           <Link href="./addnovel">

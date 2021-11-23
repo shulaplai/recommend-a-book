@@ -7,7 +7,7 @@ export const SidebarData = [
   },
   {
     title: "小說封面",
-    path: "./novel",
+    path: "./cover",
     cName: "nav-text",
   },
   {
