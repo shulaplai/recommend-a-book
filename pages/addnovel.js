@@ -84,7 +84,7 @@ function AddArticle() {
               value={articleTitle}
               className="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               type="text"
-              placeholder="Title and author"
+              placeholder="Title"
             />
           </div>
         </div>
@@ -97,7 +97,7 @@ function AddArticle() {
               type="text"
               onChange={(e) => setArticleDescription(e.target.value)}
               value={articleDescription}
-              placeholder="article feeling"
+              placeholder="description"
               className="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-300 rounded py-16 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-password"
             />
@@ -117,7 +117,7 @@ function AddArticle() {
                 type="text"
                 onChange={(e) => setArticleContent(e.target.value)}
                 value={articleContent}
-                placeholder="article feeling"
+                placeholder="Content"
                 className="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-300 rounded py-16 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-password"
               />
@@ -151,7 +151,7 @@ function AddArticle() {
                           />
                         </svg>
                         <p className="pt-1 text-sm tracking-wider text-gray-400 group-hover:text-gray-600">
-                          Attach a file
+                          Attach the Cover
                         </p>
                       </div>
                       <input
