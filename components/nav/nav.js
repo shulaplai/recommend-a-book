@@ -53,7 +53,7 @@ const Nav = () => {
               })}
             </ul>
           </nav>
-          <Link href="./">
+          <Link href="https://vigilant-booth-eb4688.netlify.app">
             <Button color="inherit">閱讀小說</Button>
           </Link>
           <Link href="./cover">
