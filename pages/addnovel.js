@@ -46,15 +46,16 @@ function AddArticle() {
       title: articleTitle,
       description: articleDescription,
       content: articleContent,
+      slug: articleSlug
     }
     await axios({
       url: `https://recommendbook-api.herokuapp.com/articles`,
 
       method: "POST",
-      data: articleInfo,
+      data: JSON.stringify(articleInfo),
       headers: {
         Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjM3MjUxODQyLCJleHAiOjE2Mzk4NDM4NDJ9.EPA22FcevYV-23yYpGu-0sEa-EAjQVJ-UTm6o3jgRGw`,
-        Accept: "application/json",
+        // Accept: "application/json",
         "Content-Type": "application/json",
       },
       // body: JSON.stringify(articleInfo),
@@ -77,11 +78,24 @@ function AddArticle() {
               className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
               htmlFor="grid-first-name"
             >
-              書名
+              中文書名
             </label>
             <input
               onChange={(e) => setArticleTitle(e.target.value)}
               value={articleTitle}
+              className="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              type="text"
+              placeholder="Title"
+            />
+            <label
+              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              htmlFor="grid-first-name"
+            >
+              英文書名
+            </label>
+            <input
+              onChange={(e) => setArticleSlug(e.target.value)}
+              value={articleSlug}
               className="appearance-none block w-full bg-gray-300 text-gray-700 border border-gray-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               type="text"
               placeholder="Title"
